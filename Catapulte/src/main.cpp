@@ -6,23 +6,25 @@ int main() {
 
 	srand(time(NULL));
 	vector<Catapulte*> cat;
+	Catapulte* catX;
 
 	for(int i=0; i<nb; i++)
 	{
-		cat.push_back(new Catapulte());
+	    catX = new Catapulte();
+	    if(catX->isViable() && catX->getForceTractionF() >= 0)
+        {
+            cat.push_back(catX);
+        }
 	}
 
 	sort(cat.begin(),cat.end(), fctComparePortee);
 	calculNote(cat);
 
-	/*sort(cat.begin(),cat.end(), fctCompareEnergie);
+	/*
+	sort(cat.begin(),cat.end(), fctCompareEnergie);
 	calculNote(cat);
-*/
-	int totalNote = 0;
-	for(int i=0; i<cat.size(); i++)
-	{
-		totalNote += cat[i]->getNote();
-	}
+    */
+
     int note = 0;
 	vector<Catapulte*> catSelect;
     for(int i=0; i<cat.size(); i++)
@@ -33,6 +35,7 @@ int main() {
             catSelect.push_back(cat[i]);
         }
     }
+
     int azar;
     vector<Catapulte*> catSecond;
     for(int i = 0; i < (cat.size() / 2); i++)

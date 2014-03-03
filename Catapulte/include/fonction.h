@@ -13,7 +13,7 @@
 #define g 9.81
 #define PI 3.14159265
 #define portee 60
-#define nb 200
+#define nb 1000
 
 using namespace std;
 
